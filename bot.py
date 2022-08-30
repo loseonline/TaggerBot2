@@ -55,6 +55,8 @@ async def start(event):
                       ],
                       [
                        Button.url('📣 Reklam Vermek İçin', 'https://t.me/loseonline')
+                      ],
+                      [
                     ),
                     link_preview=False
                    )
