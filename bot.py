@@ -45,7 +45,7 @@ async def cancel(event):
 
 @client.on(events.NewMessage(pattern="^/start$"))
 async def start(event):
-  await event.reply("**Merhaba 👋 Ben @LoseOnlineRobot\n\nBen Grubunuzdaki Üyeleri Etiketlemek İçin Yazılmış Bir Botum\nBeni Grubunuza Alıp Üyeleri Etiketleye Bilirsiz\n\n Komutlar için /help yazın**",
+  await event.reply("**Merhaba 👋 Ben @LoseOnlineRobot\n\nBen Grubunuzdaki Üyeleri Etiketlemek İçin Python ile Yazılmış Bir Botum\nBeni Grubunuza Alıp Üyeleri Etiketleye Bilirsiz\n\n Komutlar için /help yazın**",
                     buttons=(
                       [
                        Button.url('➕ Beni Bir Gruba Ekle ', 'https://t.me/LoseOnlineRobot')
@@ -53,12 +53,14 @@ async def start(event):
                       [
                        Button.url('👨‍💻 Sahibim', 'https://t.me/loseonline')
                       ],
+                      [
+                       Button.url('📣 Reklam Vermek İçin', 'https://t.me/loseonline')
                     ),
                     link_preview=False
                    )
 @client.on(events.NewMessage(pattern="^/help$"))
 async def help(event):
-  helptext = "**Komutlar:\n\n/utag -text- Kullanıcıları Etiketlerim.\n/atag -text- Yöneticileri Etiketlerim.\n/tektag tek tek etiketlerim.\n/cancel - Etiket İşlemini İptal Ederim .\n❕ Yalnızca Yöneticiler Bu Komutları KullanaBilir**"
+  helptext = "**Komutlar:\n\n/utag - Kullanıcıları Etiketlerim.\n/atag - Yöneticileri Etiketlerim.\n/tektag - tek tek etiketlerim.\n/cancel - Etiket İşlemini İptal Ederim .\n❕ Yalnızca Yöneticiler Bu Komutları Kullanabilir**"
   await event.reply(helptext)
 
 @client.on(events.NewMessage())
