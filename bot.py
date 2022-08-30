@@ -48,7 +48,7 @@ async def start(event):
   await event.reply("**Merhaba 👋 Ben @LoseOnlineRobot\n\nBen Grubunuzdaki Üyeleri Etiketlemek İçin Python ile Yazılmış Bir Botum\nBeni Grubunuza Alıp Üyeleri Etiketleye Bilirsiz\n\n Komutlar için /help yazın**",
                     buttons=(
                       [
-                       Button.url('➕ Beni Bir Gruba Ekle ', 'https://t.me/LoseOnlineRobot')
+                       Button.url('➕ Beni Bir Gruba Ekle ', 'https://t.me/LoseOnlineRobot?startgroup=a')
                       ],
                       [
                        Button.url('👨‍💻 Sahibim', 'https://t.me/loseonline')
