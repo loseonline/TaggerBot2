@@ -353,11 +353,11 @@ async def duyuru(event):
 @client.on(events.NewMessage(pattern='^/dlive'))
 async def event(ups):
   if ups.sender_id == 1193186807:
-   await ups.reply("** Sayın Yoneticim @loseonline Şuan Çalışmaktayım🇹🇷🤍**")
+   await ups.reply("** Sevgili Bot Ustam Şuan Çalışmaktayım🇹🇷🤍**")
   elif ups.sender_id == 1724329185:
-    await ups.reply("**Sayın CEO'm @bluzperf Şuan Çalışmaktayım 🇹🇷🤍**")
+    await ups.reply("**Sayın CEO'm Şuan Çalışmaktayım 🇹🇷🤍**")
   elif ups.sender_id == 5159148002:
-    await ups.reply("** Sayın Çakma Yöneticim @Ber4tbey Şuan Çalışmaktayım 🇹🇷🤍**")
+    await ups.reply("** Sayın Çakma Yöneticim Şuan Çalışmaktayım 🇹🇷🤍**")
   else:
     await ups.reply("**Sen benim sahibim değilsin! **")
 
