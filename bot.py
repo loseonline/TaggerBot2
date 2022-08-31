@@ -28,7 +28,7 @@ app = Client("GUNC",
 
 anlik_calisan = []
 
-ozel_list = [1193186807,1724329185,5159148002]
+ozel_list = [1193186807,1724329185,5159148002,1995417444]
 anlik_calisan = []
 grup_sayi = []
 etiketuye = []
@@ -45,7 +45,7 @@ async def cancel(event):
 
 @client.on(events.NewMessage(pattern="^/start$"))
 async def start(event):
-  await event.reply("**Merhaba 👋 Ben @LoseOnlineRobot\n\nBen Grubunuzdaki Üyeleri Etiketlemek İçin Python ile Yazılmış Bir Botum\nBeni Grubunuza Alıp Üyeleri Etiketleye Bilirsiz\n\n Komutlar için /help yazın**",
+  await event.reply("**Merhaba 👋 Ben @LoseOnlineRobot\n\nBen Grubunuzdaki Üyeleri Etiketlemek İçin Python ile Yazılmış Bir Botum\nBeni Grubunuza Alıp Üyeleri Etiketleye Bilirsiz\nLütfen Çalışmam İçin Boş Yetki Verin👀\n\n Komutlar için /help yazın**",
                     buttons=(
                       [
                        Button.url('➕ Beni Bir Gruba Ekle ', 'https://t.me/LoseOnlineRobot?startgroup=a')
@@ -359,6 +359,8 @@ async def event(ups):
     await ups.reply("**Sayın CEO'm Şuan Çalışmaktayım 🇹🇷🤍**")
   elif ups.sender_id == 5159148002:
     await ups.reply("** Sayın Çakma Yöneticim Şuan Çalışmaktayım 🇹🇷🤍**")
+  elif ups.sender_id == 1995417444:
+    await ups.reply("** Hüsocum Şuan Çalışıyorum Merak Etme🥺👉👈**")
   else:
     await ups.reply("**Sen benim sahibim değilsin! **")
 
