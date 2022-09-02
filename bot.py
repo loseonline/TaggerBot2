@@ -113,7 +113,7 @@ async def mentionall(event):
         return
       if usrnum == 5:
         await client.send_message(event.chat_id, f"{msg}\n{usrtxt}")
-        await asyncio.sleep(3)
+        await asyncio.sleep(1.5)
         usrnum = 0
         usrtxt = ""
         
@@ -134,7 +134,7 @@ async def mentionall(event):
         return
       if usrnum == 5:
         await client.send_message(event.chat_id, usrtxt, reply_to=msg)
-        await asyncio.sleep(3)
+        await asyncio.sleep(1.5)
         usrnum = 0
         usrtxt = ""
      
@@ -149,7 +149,7 @@ async def mentionalladmin(event):
     return await event.respond("__Bu Komut Yalnızca Grublarda Ve Kanallarda Kullanıma Bilir!__")
   
   admins = []
-  async for admin in client.iter_participants(event.chat_id):
+  async for admin in client.iter_participants(event.chat_id, filter=ChannelParticipantsAdmins):
     admins.append(admin.id)
   if not event.sender_id in admins:
     return await event.respond("__Yalnızca Yöneticiler Etiket İşlemini Yapabilir__")
@@ -181,7 +181,7 @@ async def mentionalladmin(event):
         return
       if usrnum == 5:
         await client.send_message(event.chat_id, f"{msg}\n\n{usrtxt}")
-        await asyncio.sleep(3)
+        await asyncio.sleep(1.5)
         usrnum = 0
         usrtxt = ""
         
@@ -199,7 +199,7 @@ async def mentionalladmin(event):
         return
       if usrnum == 5:
         await client.send_message(event.chat_id, usrtxt, reply_to=msg)
-        await asyncio.sleep(3)
+        await asyncio.sleep(1.5)
         usrnum = 0
         usrtxt = ""
 
@@ -336,7 +336,7 @@ async def son_durum(event):
 
 
 @client.on(events.NewMessage(pattern='^/reklam ?(.*)'))
-async def duyuru(event):
+async def reklam(event):
  
   global grup_sayi,ozel_list
   sender = await event.get_sender()
