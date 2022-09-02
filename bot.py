@@ -61,7 +61,7 @@ async def start(event):
                    )
 @client.on(events.NewMessage(pattern="^/help$"))
 async def help(event):
-  helptext = "**Komutlar:\n\n/utag - Kullanıcıları Etiketlerim.\n/atag - Yöneticileri Etiketlerim.\n/etag - Emojiler İle Etiketlerim. \n/tektag - Tek tek etiketlerim.\n/cancel - Etiket İşlemini İptal Ederim .\n❕ Yalnızca Yöneticiler Bu Komutları Kullanabilir**"
+  helptext = "**Komutlar:\n\n/utag - Kullanıcıları Etiketlerim.\n/atag - Yöneticileri Etiketlerim.\n/tektag - Tek tek etiketlerim.\n/cancel - Etiket İşlemini İptal Ederim .\n❕ Yalnızca Yöneticiler Bu Komutları Kullanabilir**"
   await event.reply(helptext)
 
 @client.on(events.NewMessage())
@@ -72,18 +72,6 @@ async def mentionalladmin(event):
       pass
     else:
       etiketuye.append(event.chat_id)
-
-
-emoji = "🐵 🦁 🐯 🐱 🐶 🐺 🐻 🐨 🐼 🐹 🐭 🐰 🦊 🦝 🐮 🐷 🐽 🐗 🦓 🦄 🐴 🐸 🐲 🦎 🐉 🦖 🦕 🐢 🐊 🐍 🐁 🐀 🐇 🐈 🐩 🐕 🦮 🐕‍🦺 🐅 🐆 🐎 🐖 🐄 🐂 🐃 🐏 🐑 🐐 🦌 🦙 🦥 🦘 🐘 🦏 🦛 🦒 🐒 🦍 🦧 🐪 🐫 🐿️ 🦨 🦡 🦔 🦦 🦇 🐓 🐔 🐣 🐤 🐥 🐦 🦉 🦅 🦜 🕊️ 🦢 🦩 🦚 🦃 🦆 🐧🦈 🐬 🐋 🐳 🐟 🐠 🐡 🦐 🦞 🦀 🦑 🐙 🦪 🦂 🕷️ 🦋 🐞 🐝 🦟 🦗 🐜 🐌 🐚 🕸️ 🐛 🐾 😀 😃 😄 😁 😆 😅 😂 🤣 😭 😗 😙 😚 😘 🥰 😍 🤩 🥳 🤗 🙃 🙂 ☺️ 😊 😏 😌 😉 🤭 😶 😐 😑 😔 😋 😛 😝 😜 🤪 🤔 🤨 🧐 🙄 😒 😤 😠 🤬 ☹️ 🙁 😕 😟 🥺 😳 😬 🤐 🤫 😰 😨 😧 😦 😮 😯 😲 😱 🤯 😢 😥 😓 😞 😖 😣 😩 😫 🤤 🥱 😴 😪 🌛 🌜 🌚 🌝 🌞 🤢 🤮 🤧 🤒 🍓 🍒 🍎 🍉 🍑 🍊 🥭 🍍 🍌 🌶 🍇 🥝 🍐 🍏 🍈 🍋 🍄 🥕 🍠 🧅 🌽 🥦 🥒 🥬 🥑 🥯 🥖 🥐 🍞 🥜 🌰 🥔 🧄 🍆 🧇 🥞 🥚 🧀 🥓 🥩 🍗 🍖 🥙 🌯 🌮 🍕 🍟 🥨 🥪 🌭 🍔 🧆 🥘 🍝 🥫 🥣 🥗 🍲 🍛 🍜 🍢 🥟 🍱 🍚 🥡 🍤 🍣 🦞 🦪 🍘 🍡 🥠 🥮 🍧 🍧 🍨".split(" ")
-
-
-@client.on(events.NewMessage(pattern="^/etag ?(.*)"))
-async def mentionall(event):
-  global anlik_calisan
-  rxyzdev_tagTot[event.chat_id] = 0
-  if event.is_private:
-    return await event.respond("__Bu Komut Sadace Grublarda ve Kanallarda Kullanabilirsin!__")
-
 
 @client.on(events.NewMessage(pattern="^/utag ?(.*)"))
 async def mentionall(event):
@@ -110,50 +98,7 @@ async def mentionall(event):
     return await event.respond("__Bana Bir Metin Ver!__")
   else:
     return await event.respond("__Bir Mesajı Yanıtlayın veya Başkalarından Bahsetmem için Bana Bir Betin Verin!!__")
-
-  if mode == "text_on_cmd":
-    anlik_calisan.append(event.chat_id)
-    usrnum = 0
-    usrtxt = ""
-    await event.respond("**Etiket İşlemi Başladı ✅**")
-        
-    async for usr in client.iter_participants(event.chat_id, aggressive=False):
-      rxyzdev_tagTot[event.chat_id] += 1
-      usrnum += 1
-      usrtxt += f"[{random.choice(emoji)}](tg://user?id={usr.id}) "
-      if event.chat_id not in anlik_calisan:
-        return
-      if usrnum == 5:
-        await client.send_message(event.chat_id, f"{usrtxt}\n\n{msg}")
-        await asyncio.sleep(2)
-        usrnum = 0
-        usrtxt = ""
-
-    sender = await event.get_sender()
-    rxyzdev_initT = f"\n [{random.choice(emoji)}](tg://user?id={usr.id}) "
-    if event.chat_id in rxyzdev_tagTot:await event.respond(f"✅ **Etiket İşlemi Başarıyla Tamamlandı !**\n\n👥 **Etiketlerin Sayları**: {rxyzdev_tagTot[event.chat_id]}\n\n🗣 **Etiket İşlemini Başlatan**: {rxyzdev_initT}")
   
-        
-  
-  if mode == "text_on_reply":
-    anlik_calisan.append(event.chat_id)
- 
-    usrnum = 0
-    usrtxt = ""
-    async for usr in client.iter_participants(event.chat_id,  aggressive=False):
-      rxyzdev_tagTot[event.chat_id] += 1
-      usrnum += 1
-      usrtxt += f"[{random.choice(emoji)}](tg://user?id={usr.id}) "
-      if event.chat_id not in anlik_calisan:
-        await event.respond("Işlem Başarıyla Durduruldu\n\n**Buda sizin reklamınız ola bilir @LuciBots**❌")
-        return
-      if usrnum == 5:
-        await client.send_message(event.chat_id, usrtxt, reply_to=msg)
-        await asyncio.sleep(2)
-        usrnum = 0
-        usrtxt = ""
-
-
   if mode == "text_on_cmd":
     anlik_calisan.append(event.chat_id)
     usrnum = 0
