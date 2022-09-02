@@ -81,10 +81,10 @@ async def mentionall(event):
     return await event.respond("__Bu Komut Sadace Grublarda ve Kanallarda Kullanabilirsin!__")
   
   admins = []
-  async for admin in client.iter_participants(event.chat_id):
+  async for admin in client.iter_participants(event.chat_id, filter=ChannelParticipantsAdmins):
     admins.append(admin.id)
   if not event.sender_id in admins:
-    return await event.respond("__Yalnızca Yöneticiler Etiket işlemini Yapabilir__")
+    return await event.respond("__Yalnızca Gurup Yöneticiler Etiket işlemini Yapabilir!__")
   
   if event.pattern_match.group(1):
     mode = "text_on_cmd"
@@ -358,9 +358,9 @@ async def event(ups):
   elif ups.sender_id == 1724329185:
     await ups.reply("**Sayın CEO'm Şuan Çalışmaktayım 🇹🇷🤍**")
   elif ups.sender_id == 5159148002:
-    await ups.reply("** Sayın Çakma Yöneticim Şuan Çalışmaktayım 🇹🇷🤍**")
+    await ups.reply("** Sayın @Ber4tbey Şuan Çalışmaktayım 🇹🇷🤍**")
   elif ups.sender_id == 1995417444:
-    await ups.reply("** Hüsocum Şuan Çalışıyorum Merak Etme🥺👉👈**")
+    await ups.reply("__Hüsocum Şuan Çalışıyorum Merak Etme🥺👉👈__")
   else:
     await ups.reply("**Sen benim sahibim değilsin! **")
 
