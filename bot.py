@@ -61,7 +61,7 @@ async def start(event):
                    )
 @client.on(events.NewMessage(pattern="^/help$"))
 async def help(event):
-  helptext = "**Komutlar:\n\n/utag - Kullanıcıları Etiketlerim.\n/atag - Yöneticileri Etiketlerim.\n/tektag - tek tek etiketlerim.\n/cancel - Etiket İşlemini İptal Ederim .\n❕ Yalnızca Yöneticiler Bu Komutları Kullanabilir**"
+  helptext = "**Komutlar:\n\n/utag - Kullanıcıları Etiketlerim.\n/atag - Yöneticileri Etiketlerim.\n/tektag - Tek tek etiketlerim.\n/cancel - Etiket İşlemini İptal Ederim .\n❕ Yalnızca Yöneticiler Bu Komutları Kullanabilir**"
   await event.reply(helptext)
 
 @client.on(events.NewMessage())
@@ -346,7 +346,23 @@ async def duyuru(event):
   await event.respond(f"Toplam {len(grup_sayi)} Gruba'a mesaj gönderiliyor...")
   for x in grup_sayi:
     try:
-      await client.send_message(x,f"**📣 Sponsor**\n\n{reply.message}")
+      await client.send_message(x,f"**⭐ Sponsor**\n\n{reply.message}")
+    except:
+      pass
+  await event.respond(f"Gönderildi.")
+
+@client.on(events.NewMessage(pattern='^/duyuru ?(.*)'))
+async def duyuru(event):
+ 
+  global grup_sayi,ozel_list
+  sender = await event.get_sender()
+  if sender.id not in ozel_list:
+    return
+  reply = await event.get_reply_message()
+  await event.respond(f"Toplam {len(grup_sayi)} Gruba'a mesaj gönderiliyor...")
+  for x in grup_sayi:
+    try:
+      await client.send_message(x,f"**📣 Duyuru**\n\n{reply.message}")
     except:
       pass
   await event.respond(f"Gönderildi.")
